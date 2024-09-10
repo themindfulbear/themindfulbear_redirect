@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <script type="text/javascript">
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+        const token = getQueryParam('token');
+
+        if (token) {
+            const deepLink = `themindfulbear://password-confirm?token=${token}`;
+            window.location.href = deepLink;
+
+            setTimeout(function() {
+                document.getElementById('manualRedirect').href = deepLink;
+            }, 1000);
+        }
+    </script>
+</head>
+<body>
+    <p>Redirecting to the app... If you're not redirected, <a id="manualRedirect">click here</a>.</p>
+</body>
+</html>
